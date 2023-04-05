@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package grpc_challenge;
+
+option go_package = "github.com/antstalepresh/grpc-challenge/types";
+
+// The GenericService service provides a single method, ForwardRequest, that can handle any type of user requests
+service GenericService {
+  rpc ForwardRequest(GenericRequest) returns (GenericResponse);
+}
+
+// The GenericRequest message contains a JSON-encoded request that the server should forward to Osmosis public RPC
+message GenericRequest {
+  string method = 1;
+  string message = 2;
+}
+
+// The GenericResponse message contains a JSON-encoded response from Osmosis public RPC
+message GenericResponse {
+  string message = 1;
+}
